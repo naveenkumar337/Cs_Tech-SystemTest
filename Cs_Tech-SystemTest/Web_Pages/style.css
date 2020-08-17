@@ -1,0 +1,37 @@
+﻿body {
+    box-sizing:border-box;
+}
+#form1 {
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+}
+    #form1 .container {
+    margin:0 auto;
+    background-color:aliceblue;
+    }
+.data-form {
+    margin-top:30px;
+    margin: auto;
+    width: 50%;
+    align-content: center;
+    margin-bottom:30px;
+}
+ .data-form * {
+        display:flex;
+        margin-bottom:5px;
+    }
+.forlabel {
+    width: 99px;
+    display: block;
+    position: relative;
+}
+.forfield input[type=text] {
+    border-radius: 5px;
+    border: none;
+    height: 31px;
+}
+.data-submit {
+text-align:center;
+height:50px;
+}

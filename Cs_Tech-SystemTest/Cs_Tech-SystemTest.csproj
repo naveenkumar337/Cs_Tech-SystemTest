@@ -133,6 +133,8 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Web_Pages\Display_Page.aspx" />
+    <Content Include="Web_Pages\script\jScript.js" />
+    <Content Include="Web_Pages\style.css" />
     <Content Include="Web_Services\WebService1.asmx" />
   </ItemGroup>
   <ItemGroup>
