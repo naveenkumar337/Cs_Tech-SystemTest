@@ -1,37 +1,140 @@
 ﻿body {
-    box-sizing:border-box;
+    box-sizing: border-box;
+    margin:0;
 }
+
 #form1 {
     width: 100vw;
     height: 100vh;
     margin: 0 auto;
 }
+
     #form1 .container {
-    margin:0 auto;
-    background-color:aliceblue;
+        margin: 0 auto;
+        margin-top:30px;
+        width:50%;
+        background-color: aliceblue;
     }
+
 .data-form {
-    margin-top:30px;
+    margin-top: 30px;
     margin: auto;
-    width: 50%;
+    width: 100%;
+    padding:10px;
     align-content: center;
-    margin-bottom:30px;
+    margin-bottom: 30px;
 }
- .data-form * {
-        display:flex;
-        margin-bottom:5px;
+
+    .data-form * {
+        display: flex;
+        margin-bottom: 5px;
+        justify-content: center;
+        overflow:hidden;
     }
+
 .forlabel {
     width: 99px;
     display: block;
     position: relative;
 }
+
 .forfield input[type=text] {
     border-radius: 5px;
     border: none;
     height: 31px;
 }
+
 .data-submit {
-text-align:center;
-height:50px;
+    text-align: center;
+    height: 50px;
 }
+
+    .data-submit * {
+        width: 50%;
+        background-color: cornflowerblue;
+        color: white;
+        border: none;
+        border-radius: 15px;
+        margin-left: 5px;
+    }
+input#btnsubmit:hover{
+    background-color:blue;
+}
+.gridview {
+    width: 100%;
+    padding: 10px;
+}
+
+#grid {
+    width: 100%;
+}
+
+    #grid tr {
+        border: 2px solid gray;
+        color: black;
+        height: 45px;
+    }
+
+table {
+    background-color: white;
+    width:100%;
+    overflow:hidden;
+}
+
+tr td {
+    margin-left: 10px;
+    border: 1px solid gray;
+    text-align: center;
+}
+
+tr:first-child {
+    /*background-color:gray;*/
+    text-align: center;
+}
+
+tr:nth-child(2n) {
+    background-color: #5f9ea0;
+}
+
+tr td > input[type=button], tr td > [type=submit] {
+    margin-left: 5px;
+    text-align: center;
+    width: 100px;
+    background-color: blueviolet;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    height: 35px;
+}
+tr td > input[type=button]:hover, tr td > [type=submit]:hover {
+    background-color:blue;
+    cursor:pointer;
+}
+.search-box {
+    margin-top:0px;    
+    width: fit-content;
+    background-color: white;
+}
+.search-items {
+margin-left:100px;
+display:flex;
+}
+.search-items * {
+    margin-right:20px;
+}
+
+    .search-items * input[type=text] {
+    border-radius:10px;
+    height:35px;
+    border:1px solid blue;
+    }
+    .search-items * input[type=button] {
+    background-color:darkviolet;
+    border:none;
+    text-align:center;
+    height:30px;
+    margin-top:3px;
+    width:100px;
+    color:white;
+    border-radius:5px;
+    }

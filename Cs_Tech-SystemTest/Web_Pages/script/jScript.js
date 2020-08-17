@@ -12,12 +12,12 @@ $(document).ready(function () {
         modal.find('#mod-txtsalary').val(event.relatedTarget.parentNode.parentNode.children[3].innerText);
         modal.find('#mod-txtdesignation').val(event.relatedTarget.parentNode.parentNode.children[4].innerText);
     });
-    $('#myModalfordelete').on('show.bs.modal', function (event) {
-        debugger;
-        var button = $(event.relatedTarget) // Button that triggered the modal
-        var modal = $(this);
-        modal.find('#empid').text(event.relatedTarget.parentNode.parentNode.children[0].innerText);
-    });
+    //$('#myModalfordelete').on('show.bs.modal', function (event) {
+    //    debugger;
+    //    var button = $(event.relatedTarget) // Button that triggered the modal
+    //    var modal = $(this);
+    //    modal.find('#empid').text(event.relatedTarget.parentNode.parentNode.children[0].innerText);
+    //});
     //update data
     $('.btn-update').click(function (e) {
         debugger;
@@ -32,8 +32,10 @@ $(document).ready(function () {
         callWebService("updateEmployee", JSON.stringify({ emp: empobj }));
     });
     //delete employee
-    $('btn-delete').click(function (e) {
-        var model = $('#myModalfordelete');
+    debugger;
+    $('tr td :submit').click(function (e) {
+        debugger;
+        var id = e.currentTarget.parentNode.parentNode.children[0].innerText;
         callWebService("udeleteEmployee", JSON.stringify({ id: +modal.find('#empid').text() }));
     });
     //Add New Employee
@@ -65,6 +67,11 @@ $(document).ready(function () {
         callWebService("addEmployee", JSON.stringify({ emp: empobj }));
         callWebService("getEmployees", ""); 
     });
+    $('#btnsearch').click(function () {
+        debugger;
+        var name = $('#txtsearchname').val();
+        callWebService("searchEmployee", JSON.stringify({ str: name }));
+    });
 });
 function IsEmailCorrect(email) {
     var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -88,6 +95,15 @@ function callWebService(url, data) {
             else if (url.includes('getEmployees')) {
                 AppendToGrid(response.d);
             }
+            else if (url.includes('searchEmployee')) {
+                $('#grid tr').slice(1, $('#grid tr').length).remove();
+                if (response.d.length >= 1) {
+                    AppendToGrid(response.d);
+                }
+                else {
+                    $('#grid').append(`<tr><td>Data Not found...</td><tr>`);
+                }
+            }
             return response.d;
         }, error: function (err) {
             return err;
@@ -96,6 +112,6 @@ function callWebService(url, data) {
 }
 function AppendToGrid(list) {
     $.each(list, function (ind, emp) {
-        $('#grid').append(`<tr><td>${emp.id}</td><td>${emp.name}</td><td>${emp.email}</td><td>${emp.salary}</td><td>${emp.designation}</td><td><input id='btnedit${ind}' value='Edit' type='button' data-toggle='modal' data-target='#myModal' /><input id='btndelete${ind}' value='Delete' data-toggle='modal' data-target='#myModalfordelete' type='submit' /></td></tr>`);
+        $('#grid').append(`<tr><td>${emp.id}</td><td>${emp.name}</td><td>${emp.email}</td><td>${emp.salary}</td><td>${emp.designation}</td><td><input id='btnedit${ind}' value='Edit' type='button' data-toggle='modal' data-target='#myModal' /><input id='btndelete${ind}' value='Delete' type='submit' /></td></tr>`);
     });
 }

@@ -62,6 +62,16 @@
                 </div>
             </div>
         </div>
+        <div class="search-box">
+            <div class="search-items">
+                <div class="search-name">
+                    <input type="text" id="txtsearchname"/>
+                </div>
+                 <div class="search-button">
+                    <input type="button" id="btnsearch"  value="Search"/>
+                </div>
+            </div>
+        </div>
         <div class="gridview">
             <table id="grid">
                 <tr>
@@ -73,68 +83,6 @@
                     <th>Action</th>
                 </tr>
             </table>
-        </div>
-
-        <div class="container">
-            <div class="modal" id="myModal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title">Update Details</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <div>
-                                <h5 id="mod-lblid"></h5>
-                            </div>
-                            <div>
-                                <label>Name</label>
-                                <input type="text" id="mod-txtname" />
-                            </div>
-                            <div>
-                                <label>Email</label>
-                                <input type="text" id="mod-txtemail" />
-                            </div>
-                            <div>
-                                <label>Salary</label>
-                                <input type="text" id="mod-txtsalary" />
-                            </div>
-                            <div>
-                                <label>Designation</label>
-                                <select id="mod-grid">
-                                    <option value="0" disabled="disabled">--select-any-one--</option>
-                                </select>
-                            </div>
-                        </div>
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn-update btn btn-primary">Save</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal" id="myModalfordelete">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <h6>Are you showre to delete <span id="empid"></span>Employee</h6>
-                        </div>
-                        <!-- Modal footer -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn-delete btn btn-primary">Delete</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </form>
     <link rel="stylesheet" href="style.css" />

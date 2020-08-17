@@ -67,21 +67,27 @@ namespace Cs_Tech_SystemTest.Web_Services
             using (SqlDataAdapter ad = new SqlDataAdapter(cmd)) {
                 ad.Fill(dt);
             }
+            var liemp=maptoList(dt);
+            return liemp;
+        }
+        public List<Employee> maptoList(DataTable dt) {
             List<Employee> liemp = new List<Employee>();
-            if (dt.Rows.Count >= 1) {
-
-                foreach (DataRow row in dt.Rows) {
+            if (dt.Rows.Count >= 1)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
                     liemp.Add(new Employee
                     {
                         id = Int32.Parse(row["EmpId"].ToString()),
                         name = row["EmpName"].ToString(),
                         email = row["EmpEmail"].ToString(),
                         salary = Double.Parse(row["EmpSalary"].ToString()),
-                        designation = row["EmpDesignation"].ToString()                
+                        designation = row["EmpDesignation"].ToString()
                     });
                 }
             }
             return liemp;
+
         }
 
         [WebMethod(MessageName = "updateEmployee")]
@@ -106,6 +112,19 @@ namespace Cs_Tech_SystemTest.Web_Services
             con.Open();
             var result = cmd.ExecuteNonQuery();
             con.Close();
+        }
+        [WebMethod(MessageName = "searchEmployee")]
+        public List<Employee> searchEmployee(string str) {
+            SqlCommand cmd = new SqlCommand("sp_Cs_SearchEmployeeRecords", con);
+            cmd.Parameters.AddWithValue("@string", str);
+            cmd.CommandType = CommandType.StoredProcedure;
+            DataTable dt = new DataTable();
+            using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
+            {
+                ad.Fill(dt);
+            }
+            var liemp = maptoList(dt);
+            return liemp;
         }
     }
 }
