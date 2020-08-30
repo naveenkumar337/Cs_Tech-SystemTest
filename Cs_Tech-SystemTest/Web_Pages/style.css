@@ -43,12 +43,35 @@
     border: none;
     height: 31px;
 }
-
+span {
+color:red!important;
+}
+.alert {
+height:50px;
+width:300px;
+border:2px dashed blue;
+float:right;
+margin-right:30px;
+text-align:center;
+}
+div.success{
+    background-color:green;
+    color:white;
+}   
+div.fail{
+    background-color:red;
+    color:white;
+}
 .data-submit {
     text-align: center;
     height: 50px;
 }
-
+.modal-body label {
+width:99px;
+}
+.modal-body input,.modal-body select {
+width:50%;
+}
     .data-submit * {
         width: 50%;
         background-color: cornflowerblue;
@@ -112,15 +135,23 @@ tr td > input[type=button]:hover, tr td > [type=submit]:hover {
 }
 .search-box {
     margin-top:0px;    
-    width: fit-content;
+    width: 100%;
     background-color: white;
 }
+
 .search-items {
 margin-left:100px;
 display:flex;
+width:100%;
 }
 .search-items * {
     margin-right:20px;
+    border-radius:5px;
+}
+.viewall {
+float: right;
+    margin: auto;
+    margin-right: 86px;
 }
 
     .search-items * input[type=text] {
@@ -133,7 +164,6 @@ display:flex;
     border:none;
     text-align:center;
     height:30px;
-    margin-top:3px;
     width:100px;
     color:white;
     border-radius:5px;

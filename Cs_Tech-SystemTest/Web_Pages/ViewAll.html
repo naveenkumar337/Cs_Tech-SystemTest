@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   <!-- <script type="text/javascript" src="script/jScript.js"></script>-->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="gridview">
+        <table id="grid">
+            <tr>
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Salary</th>
+                <th>Designation</th>
+                <th>Action</th>
+            </tr>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function () {
+            debugger;
+            $.ajax({
+                method: 'post',
+                dataType: 'json',
+                data: "",
+                contentType: "application/json;charset=utf-8",
+                url: `/Web_Services/WebService1.asmx/getEmployees`,
+                success: function (response) { AppendToGrid(response.d); }, error: function () {
+                   
+                }
+            });
+            function AppendToGrid(list) {
+                $.each(list, function (ind, emp) {
+                    $('#grid').append(`<tr><td>${emp.id}</td><td>${emp.name}</td><td>${emp.email}</td><td>${emp.salary}</td><td>${emp.designation}</td><td><input id='btnedit${ind}' value='Edit' type='button' data-toggle='modal' data-target='#myModal' /><input id='btndelete${ind}' value='Delete' onclick='deleteFun(this)' type='submit' /></td></tr>`);
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

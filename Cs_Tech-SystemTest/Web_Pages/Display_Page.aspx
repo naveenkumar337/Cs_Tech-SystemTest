@@ -5,7 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
@@ -16,6 +15,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
+         <div class="alert success">
+            <h6>
+                hisuccess
+            </h6>
+        </div>
         <div class="container">
             <div class="data-form">
                 <div class="data-name">
@@ -51,10 +55,11 @@
                         <label for="dddesignation" title="Designation">Designation</label>
                     </div>
                     <div class="forfield">
-
                         <select id="DropDownList1">
                             <option value="0">--Select-One--</option>
                         </select>
+                        <span class="error" id="invalid_selection">Please Select Any One</span>
+
                     </div>
                 </div>
                 <div class="data-submit">
@@ -62,13 +67,67 @@
                 </div>
             </div>
         </div>
+        <div class="container">
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Update Details</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <div>
+                                <h5 id="mod-lblid"></h5>
+                            </div>
+                            <div>
+                                <label>Name</label>
+                                <input type="text" id="mod-txtname" />
+                            </div>
+                            <div>
+                                <label>Email</label>
+                                <input type="text" id="mod-txtemail" />
+                            </div>
+                            <div>
+                                <label>Salary</label>
+                                <input type="text" id="mod-txtsalary" />
+                            </div>
+                            <div>
+                                <label>Designation</label>
+                                <select id="mod-grid">
+                                    <option value="0">--select-any-one--</option>
+                                </select><span id="modseldata" class="error">Please Select any one from this</span>
+                            </div>
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn-update btn btn-primary">Save</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="search-box">
             <div class="search-items">
                 <div class="search-name">
-                    <input type="text" id="txtsearchname"/>
+                    <select id="selsearch">
+                        <option value="0">EmpName</option>
+                        <option value="1">EmpEmail</option>
+                        <option value="2">EmpDesignation</option>
+                    </select>
+                    <input type="text" id="txtsearchname" />
+                    <select id="search-dropdown"></select>
                 </div>
-                 <div class="search-button">
-                    <input type="button" id="btnsearch"  value="Search"/>
+                <div class="search-button">
+                    <input type="button" id="btnsearch" value="Search" />
+                </div>
+                <div class="viewall">
+                    <a href="ViewAll.html" target="_blank">
+                    <input type="button" value="ViewAll" /></a>
                 </div>
             </div>
         </div>
@@ -84,6 +143,7 @@
                 </tr>
             </table>
         </div>
+       
     </form>
     <link rel="stylesheet" href="style.css" />
 

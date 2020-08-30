@@ -47,7 +47,7 @@ namespace Cs_Tech_SystemTest.Web_Services
                 return liDes;
         }
         [WebMethod(MessageName ="addEmployee")]
-        public void addEmployeeDetails(Employee emp)
+        public int addEmployeeDetails(Employee emp)
         {
             SqlCommand cmd = new SqlCommand("sp_Cs_AddEmployeeDetails", con);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -56,8 +56,9 @@ namespace Cs_Tech_SystemTest.Web_Services
             cmd.Parameters.Add(new SqlParameter("@empDesignationID", emp.id));
             cmd.Parameters.Add(new SqlParameter("@empSalary", emp.salary));
             con.Open();
-            cmd.ExecuteNonQuery();
+           int result=Convert.ToInt32(cmd.ExecuteScalar());
             con.Close();
+            return result;
         }
         [WebMethod(MessageName = "getEmployees")]
         public List<Employee> getEmployees() {
@@ -91,7 +92,7 @@ namespace Cs_Tech_SystemTest.Web_Services
         }
 
         [WebMethod(MessageName = "updateEmployee")]
-        public void updateEmployeeDetails(Employee emp) {
+        public int updateEmployeeDetails(Employee emp) {
             SqlCommand cmd = new SqlCommand("sp_Cs_updateEmployeeDetails", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@empid", emp.id));
@@ -100,23 +101,26 @@ namespace Cs_Tech_SystemTest.Web_Services
             cmd.Parameters.Add(new SqlParameter("@empsalary", emp.salary));
             cmd.Parameters.Add(new SqlParameter("@empdesig", emp.designation));
             con.Open();
-            var result= cmd.ExecuteNonQuery();
+            var result=Convert.ToInt32(cmd.ExecuteScalar());
             con.Close();
+            return result;
         }
 
         [WebMethod(MessageName = "deleteEmployee")]
-        public void deleteEmployee(int id) {
+        public int deleteEmployee(int id) {
             SqlCommand cmd = new SqlCommand("sp_Cs_deletEemployee", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add(new SqlParameter("@empid", id));
             con.Open();
-            var result = cmd.ExecuteNonQuery();
+            var result = Convert.ToInt32(cmd.ExecuteScalar());
             con.Close();
+            return result;
         }
         [WebMethod(MessageName = "searchEmployee")]
-        public List<Employee> searchEmployee(string str) {
+        public List<Employee> searchEmployee(string option,string str) {
             SqlCommand cmd = new SqlCommand("sp_Cs_SearchEmployeeRecords", con);
-            cmd.Parameters.AddWithValue("@string", str);
+            cmd.Parameters.AddWithValue("@option", option);
+            cmd.Parameters.AddWithValue("@value", str);
             cmd.CommandType = CommandType.StoredProcedure;
             DataTable dt = new DataTable();
             using (SqlDataAdapter ad = new SqlDataAdapter(cmd))
